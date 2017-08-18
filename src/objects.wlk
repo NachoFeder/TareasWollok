@@ -1,6 +1,6 @@
 
 object berghain {
-	var pistas
+	var pistas = #{mainRoom}
 	var personas
 	var patovas
 }
@@ -10,6 +10,14 @@ object mainRoom{
 	
 	method ingresarPersona(persona){
 		personas.add(persona)
+	}
+	
+	method pasarMusica(){
+		personas.map(
+			{persona => persona.disminuirEnergia(40)
+						persona.aumentarDiversion(30)
+			}
+		)
 	}
 	
 	method personas(){
@@ -24,5 +32,13 @@ object lucaz {
 	
 	method ingresarAPista(pista){
 		pista.ingresarPersona(self)
+	}
+	
+	method disminuirEnergia(cantidad){
+		energia -= cantidad
+	}
+	
+	method aumentarDiversion(cantidad){
+		diversion += cantidad
 	}
 }
