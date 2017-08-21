@@ -38,6 +38,10 @@ object panoramaBar {
 		dj = unDJ
 	}
 	
+	method personas(){
+		return personas
+	}
+	
 	method pasarMusica(){
 		dj.tocarMusica(personas)
 	}
@@ -74,6 +78,26 @@ object tommyMunioz{
 			}		
 		)
 	}	
+}
+
+object rochensen{
+	
+	method dejaPasar(persona){
+		return persona.edad() > 21
+	}
+}
+
+object rodrigsen{
+	
+	method dejaPasar(persona){
+		return persona.remera() == "negra"
+	}
+}
+
+object gushtavotruccensen{
+	method dejaPasar(persona){
+		return false
+	}
 }
 
 object vonLucaz {
