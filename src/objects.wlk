@@ -18,8 +18,8 @@ object mainRoom{
 	
 	method pasarMusica(){
 		personas.map(
-			{persona => persona.disminuirEnergia(40)
-						persona.aumentarDiversion(30)
+			{persona => persona.modificarEnergia(-40)
+						persona.modificarDiversion(30)
 			}
 		)
 	}
@@ -29,7 +29,15 @@ object mainRoom{
 	}
 }
 
-object lucaz {
+object panoramaBar {
+	
+	var dj
+	var personas
+	
+	
+}
+
+object vonLucaz {
 	
 	var edad = 17
 	var energia = 150
@@ -40,11 +48,11 @@ object lucaz {
 		pista.ingresarPersona(self)
 	}
 	
-	method disminuirEnergia(cantidad){
-		energia -= cantidad
+	method modificarEnergia(cantidad){
+		energia += cantidad
 	}
 	
-	method aumentarDiversion(cantidad){
+	method modificarDiversion(cantidad){
 		diversion += cantidad
 	}
 }
@@ -60,11 +68,11 @@ object gonzen {
 		pista.ingresarPersona(self)
 	}
 	
-	method disminuirEnergia(cantidad){
-		energia -= cantidad
+	method modificarEnergia(cantidad){
+		energia += cantidad
 	}
 	
-	method aumentarDiversion(cantidad){
+	method modificarDiversion(cantidad){
 		diversion += cantidad
 	}
 }
@@ -80,11 +88,11 @@ object bianker {
 		pista.ingresarPersona(self)
 	}
 	
-	method disminuirEnergia(cantidad){
-		energia -= cantidad
+	method modificarEnergia(cantidad){
+		energia += cantidad
 	}
 	
-	method aumentarDiversion(cantidad){
+	method modificarDiversion(cantidad){
 		diversion += cantidad
 	}
 }
