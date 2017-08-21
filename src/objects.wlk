@@ -34,7 +34,21 @@ object panoramaBar {
 	var dj
 	var personas
 	
+	method pasarMusica(){
+		dj.tocarMusica(personas)
+	}
 	
+}
+
+object dixon {
+	
+	method tocarMusica(grupoDePersonas){
+		grupoDePersonas.map(
+			{persona => persona.modificarEnergia(-40)
+						persona.modificarDiversion(30)
+			}		
+		)
+	}
 }
 
 object vonLucaz {
@@ -54,6 +68,14 @@ object vonLucaz {
 	
 	method modificarDiversion(cantidad){
 		diversion += cantidad
+	}
+	
+	method edad(){
+		return edad
+	}
+	
+	method remera(){
+		return remera
 	}
 }
 
@@ -75,6 +97,13 @@ object gonzen {
 	method modificarDiversion(cantidad){
 		diversion += cantidad
 	}
+		method edad(){
+		return edad
+	}
+	
+	method remera(){
+		return remera
+	}
 }
 
 object bianker {
@@ -94,6 +123,13 @@ object bianker {
 	
 	method modificarDiversion(cantidad){
 		diversion += cantidad
+	}
+		method edad(){
+		return edad
+	}
+	
+	method remera(){
+		return remera
 	}
 }
 
