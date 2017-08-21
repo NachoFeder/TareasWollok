@@ -1,11 +1,22 @@
 
 object berghain {
 	var pistas = #{mainRoom, panoramaBar}
-	var personas
+	var personas = #{}
 	var patovaDeTurno
 	
-	method patovaDeturno(patova){
+	method patovaDeTurno(patova){
 		patovaDeTurno = patova
+	}
+	
+	method ingresarPersona(persona, pista){
+		if(patovaDeTurno.dejaPasar(persona)){
+			pista.ingresarPersona(persona)
+			personas.add(persona)
+		}
+	}
+	
+	method personas(){
+		return personas
 	}
 }
 
@@ -33,6 +44,10 @@ object panoramaBar {
 	
 	var dj
 	var personas = #{}
+	
+	method ingresarPersona(persona){
+		personas.add(persona)
+	}
 	
 	method dj(unDJ){
 		dj = unDJ
@@ -95,6 +110,7 @@ object rodrigsen{
 }
 
 object gushtavotruccensen{
+	
 	method dejaPasar(persona){
 		return false
 	}
@@ -107,8 +123,8 @@ object vonLucaz {
 	var diversion = 70
 	var remera = "blanca"
 	
-	method ingresarAPista(pista){
-		pista.ingresarPersona(self)
+	method ingresarAlClub(club,pista){
+		club.ingresarPersona(self, pista)
 	}
 	
 	method modificarEnergia(cantidad){
@@ -139,8 +155,8 @@ object gonzen {
 	var diversion = 15
 	var remera = "blanca"
 	
-	method ingresarAPista(pista){
-		pista.ingresarPersona(self)
+	method ingresarAlClub(club,pista){
+		club.ingresarPersona(self, pista)
 	}
 	
 	method modificarEnergia(cantidad){
@@ -170,8 +186,8 @@ object bianker {
 	var diversion = 80
 	var remera = "negra"
 	
-	method ingresarAPista(pista){
-		pista.ingresarPersona(self)
+	method ingresarAlClub(club,pista){
+		club.ingresarPersona(self, pista)
 	}
 	
 	method modificarEnergia(cantidad){
