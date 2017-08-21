@@ -1,6 +1,6 @@
 
 object berghain {
-	var pistas = #{mainRoom}
+	var pistas = #{mainRoom, panoramaBar}
 	var personas
 	var patovaDeTurno
 	
@@ -32,7 +32,11 @@ object mainRoom{
 object panoramaBar {
 	
 	var dj
-	var personas
+	var personas = #{}
+	
+	method dj(unDJ){
+		dj = unDJ
+	}
 	
 	method pasarMusica(){
 		dj.tocarMusica(personas)
@@ -49,6 +53,27 @@ object dixon {
 			}		
 		)
 	}
+}
+
+object marcelDettmann{
+	
+	method tocarMusica(grupoDePersonas){
+		grupoDePersonas.map(
+			{persona => persona.dejarSinEnergia()
+						persona.modificarDiversion(1000)
+			}		
+		)
+	}
+}
+
+object tommyMunioz{
+	
+	method tocarMusica(grupoDePersonas){
+		grupoDePersonas.map(
+			{persona => persona.modificarEnergia(-80)
+			}		
+		)
+	}	
 }
 
 object vonLucaz {
@@ -68,6 +93,10 @@ object vonLucaz {
 	
 	method modificarDiversion(cantidad){
 		diversion += cantidad
+	}
+	
+	method dejarSinEnergia(){
+		energia = 0
 	}
 	
 	method edad(){
@@ -100,6 +129,10 @@ object gonzen {
 		method edad(){
 		return edad
 	}
+
+	method dejarSinEnergia(){
+		energia = 0
+	}
 	
 	method remera(){
 		return remera
@@ -124,7 +157,12 @@ object bianker {
 	method modificarDiversion(cantidad){
 		diversion += cantidad
 	}
-		method edad(){
+	
+	method dejarSinEnergia(){
+		energia = 0
+	}
+	
+	method edad(){
 		return edad
 	}
 	
