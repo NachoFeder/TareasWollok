@@ -1,7 +1,7 @@
 
 object berghain {
-	var pistas = #{mainRoom, panoramaBar} //que hago con dark room?
-	var personas = #{} // deberia estar o no?
+	var pistas = #{mainRoom, panoramaBar, darkRoom}
+	var personas = #{}
 	var patovaDeTurno
 	
 	method patovaDeTurno(patova){
@@ -23,17 +23,23 @@ object berghain {
 		return personas.contains(persona)
 	}
 	
-	method cantidadDePersonasPorPista(){} //es un metodo del club o cada pista lo deberia indicar con un cantidad de personas?
+	method cantidadDePersonasPorPista(){
+		return pistas.map({pista => pista.cantidadDePersonas()})
+	}
 }
 
 object mainRoom{
-	var personas = #{}
+	var personas = #{1,2,3,4,5,6}
+	
+	method cantidadDePersonas(){
+		return "Main Room: " + personas.size()
+	}
 	
 	method ingresarPersona(persona){
 		personas.add(persona)
 	}
 	
-	method pasarMusica(){ // repeticion de logica?
+	method pasarMusica(){
 		personas.map(
 			{persona => persona.modificarEnergia(-40)
 						persona.modificarDiversion(30)
@@ -46,10 +52,29 @@ object mainRoom{
 	}
 }
 
+object darkRoom {
+	
+	var personas = #{1}
+	
+	method pasarMusica(){}
+
+	method cantidadDePersonas(){
+		return "Dark Room: " + personas.size()
+	}
+	
+	method ingresarPersona(persona){
+		personas.add(persona)
+	}
+}
+
 object panoramaBar {
 	
 	var dj
-	var personas = #{}
+	var personas = #{4,3}
+	
+	method cantidadDePersonas(){
+		return "Panorama Bar: " + personas.size()
+	}
 	
 	method ingresarPersona(persona){
 		personas.add(persona)
